@@ -3,7 +3,8 @@
 
   <div>
     <label class="sr-only">Email address</label>
-    <input #email [(ngModel)]="user.email" type="email" class="form-control" placeholder="Email address"/>
+    <input (blur)="verifyEmail()" [(ngModel)]="user.email" type="email" class="form-control" placeholder="Email address"/>
+    <div style="color: red" *ngIf="isEmailValid === false" >Email already registred</div>
   </div>
 
   <div>
@@ -13,9 +14,9 @@
 
   <div>
     <label class="sr-only">Repeat Password</label>
-    <input #repeatPassword type="password" class="form-control" placeholder="Repeat Password"/>
+    <input (blur)="comparePassword" type="password" class="form-control" placeholder="Repeat Password"/>
   </div>
 
-  <button style="width: 120px" class="btn btn-lg btn-primary btn-block ml-5 mt-3" (click)="createUser()">Register</button>
+  <button [disabled]="!validateRegistrationForm()" style="width: 120px" class="btn btn-lg btn-primary btn-block ml-5 mt-3" (click)="createUser()">Register</button>
 
 </div>

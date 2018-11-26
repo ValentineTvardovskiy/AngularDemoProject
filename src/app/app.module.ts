@@ -8,6 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
 import { RegistrationComponent } from './registration/registration.component';
 import {FormsModule} from '@angular/forms';
+import {UserService} from './services/user.service';
 
 const appRouts: Routes = [
   {path: 'categories', component: CategoriesComponent},
@@ -28,7 +29,9 @@ const appRouts: Routes = [
     BrowserModule,
     HttpClientModule
   ],
-  providers: [CategoryService],
+  providers: [
+    CategoryService,
+    UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
